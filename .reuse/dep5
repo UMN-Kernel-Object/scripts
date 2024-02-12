@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: UMN Kernel Object
+Source: https://github.com/UMN-Kernel-Object/scripts`
+
+Files: .github/*
+Copyright: 2024 Nathan Ringo <nathan@remexre.com>
+License: CC0-1.0
