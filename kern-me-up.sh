@@ -163,10 +163,11 @@ udhcpc
 passwd -d root
 )
 
-printf "\n\e[1;32mWelcome!\e[0m You can log in as \e[1mroot\e[0m with \e[1mno password\e[0m.\n"
-printf "\n\e[1;96mWant gcc, vim, or bash?\e[0m Try running \e[1mapk add vim\e[0m!\n"
-printf "\n\e[1;96mLooking for your files?\e[0m Try running \e[1mcd /mnt\e[0m!\n"
-printf "\n\e[1;96mTrying to exit the VM?\e[0m  Try hitting \e[1mCtrl-a\e[0m, then \e[1mx\e[0m!\n"
+printf '\n\e[1;32mWelcome!\e[0m You can log in as \e[1mroot\e[0m with \e[1mno password\e[0m.\n'
+printf '\n\e[1;96mWant gcc, vim, or bash?\e[0m  Try running \e[1mapk add vim\e[0m!\n'
+printf '\n\e[1;96mLooking for your files?\e[0m  Try running \e[1mcd /mnt\e[0m!\n'
+printf '\n\e[1;96mTrying to exit the VM?\e[0m   Try hitting \e[1mCtrl-a\e[0m, then \e[1mx\e[0m!\n'
+printf '\n\e[1;96mTerminal the wrong size?\e[0m Try running \e[1meval "\$(resize)"\e[0m\e[0m\n'
 while true; do
 	getty 0 /dev/ttyS0
 done
