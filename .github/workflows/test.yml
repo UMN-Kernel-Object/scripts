@@ -11,3 +11,4 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
     - run: nix shell nixpkgs#reuse -c reuse lint
+    - run: nix shell nixpkgs#shellcheck -c find -name '*.sh' -exec shellcheck {} \;

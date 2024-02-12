@@ -57,11 +57,11 @@ config_check() {
 here="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 kernel_dir="$here/linux"
 fs_dir="$here"
-if [[ $# > 0 ]]; then
+if [[ $# -gt 0 ]]; then
 	kernel_dir="$(realpath "$1")"
 	shift
 fi
-if [[ $# > 0 ]]; then
+if [[ $# -gt 0 ]]; then
 	fs_dir="$(realpath "$1")"
 	shift
 fi
