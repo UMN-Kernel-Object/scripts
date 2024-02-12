@@ -2,11 +2,14 @@
 # SPDX-FileCopyrightText: 2024 Nathan Ringo <nathan@remexre.com>
 # SPDX-License-Identifier: MIT OR Apache-2.0
 set -euo pipefail
+here="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 # Some configurables.
 KERNEL_CLONE_URL="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 ROOTFS_URL="https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-minirootfs-3.19.1-x86_64.tar.gz"
 ROOTFS_HASH="185123ceb6e7d08f2449fff5543db206ffb79decd814608d399ad447e08fa29e"
+DEFAULT_KERNEL_DIR="$here/linux"
+DEFAULT_FS_DIR="$here"
 
 # say VERB REST...
 #
@@ -54,15 +57,18 @@ config_check() {
 # Parse arguments.
 # 
 #     Usage: kern-me-up.sh [KERNEL-DIR] [FS-DIR] QEMU-ARGS...
-here="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-kernel_dir="$here/linux"
-fs_dir="$here"
+kernel_dir="${KMU_KERNEL_DIR:-$DEFAULT_KERNEL_DIR}"
+fs_dir="${KMU_FS_DIR:-$DEFAULT_FS_DIR}"
 if [[ $# -gt 0 ]]; then
-	kernel_dir="$(realpath "$1")"
+	if [[ "$1" != "-" ]]; then
+		kernel_dir="$(realpath "$1")"
+	fi
 	shift
 fi
 if [[ $# -gt 0 ]]; then
-	fs_dir="$(realpath "$1")"
+	if [[ "$1" != "-" ]]; then
+		fs_dir="$(realpath "$1")"
+	fi
 	shift
 fi
 
